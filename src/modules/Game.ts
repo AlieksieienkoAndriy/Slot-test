@@ -42,10 +42,10 @@ export class Game {
         const REEL_WIDTH = 160;
         const SYMBOL_SIZE = 150;
         const slotTextures = [
-            Texture.from('https://pixijs.com/assets/eggHead.png'),
-            Texture.from('https://pixijs.com/assets/flowerTop.png'),
-            Texture.from('https://pixijs.com/assets/helmlok.png'),
-            Texture.from('https://pixijs.com/assets/skully.png'),
+            Texture.from('eggHead'),
+            Texture.from('flowerTop'),
+            Texture.from('helmlok'),
+            Texture.from('skully'),
         ];
 
         for (let i = 0; i < 5; i++) {
