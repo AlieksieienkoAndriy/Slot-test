@@ -44,12 +44,12 @@ export class LoaderScene extends PIXI.Container implements IScene {
   }
 
   private createText() {
-    const text = new PIXI.Text('Loading...', CONFIG.textStyles.game);
+    const text = new PIXI.Text('Loading...', CONFIG.textStyles.loader);
     text.anchor.set(0.5);
     text.position.set(Game.app.screen.width / 2, this.loaderBar.y - 50);
     this.addChild(text);
 
-    this.progress = new PIXI.Text('0%', CONFIG.textStyles.game);
+    this.progress = new PIXI.Text('0%', CONFIG.textStyles.loader);
     this.progress.anchor.set(0.5);
     this.progress.position.set(
       this.loaderBar.x + this.loaderBar.width / 2, 
@@ -72,8 +72,6 @@ export class LoaderScene extends PIXI.Container implements IScene {
 
   private gameLoaded(): void {
     Game.changeScene(new GameScene());
-    console.log('loaded...');
-    
   }
 
   public update(): void {    

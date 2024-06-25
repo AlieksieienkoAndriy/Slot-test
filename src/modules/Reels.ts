@@ -1,9 +1,8 @@
-import { Container, Texture } from "pixi.js";
+import { Container, Graphics } from "pixi.js";
 import { Reel } from "./Reel";
 import { CONFIG } from "../config";
 import { Game } from "./Game";
 import { SpinAnimation } from "./SpinAnimation";
-
 
 export class Reels {
   reels: Reel[] = [];
@@ -12,6 +11,7 @@ export class Reels {
   constructor() {
     this.reelContainer = new Container();
     this.addReels();
+    this.createMask();
   }
 
   addReels() {
@@ -21,6 +21,15 @@ export class Reels {
       this.reelContainer.addChild(reel.container);
       this.reels.push(reel);
     }
+  }
+
+  createMask() {    
+    const mask = new Graphics()
+      .rect(0, 0, this.reelContainer.width, this.reelContainer.height - CONFIG.game.symbol_size)
+      .fill({ color: 0xFFFFFF })
+
+    this.reelContainer.mask = mask;
+    this.reelContainer.addChild(mask);
   }
 
   play() {

@@ -1,4 +1,4 @@
-import { Color, Container, FillGradient, Graphics, Text, TextStyle, Texture } from "pixi.js";
+import { Color, Container, FillGradient, Graphics, Text, TextStyle, TextStyleOptions, Texture } from "pixi.js";
 import { IScene } from "../../utils/types";
 import { BonusController } from "../BonusController";
 import { Game } from "../Game";
@@ -38,22 +38,8 @@ export class GameScene extends Container implements IScene {
       fill.addColorStop(ratio, number);
     });
 
-    const style = new TextStyle({
-      fontFamily: 'Arial',
-      fontSize: 36,
-      fontStyle: 'italic',
-      fontWeight: 'bold',
-      fill: { fill },
-      stroke: { color: 0x4a1850, width: 5 },
-      dropShadow: {
-        color: 0x000000,
-        angle: Math.PI / 6,
-        blur: 4,
-        distance: 6,
-      },
-      wordWrap: true,
-      wordWrapWidth: 440,
-    });
+    const style = new TextStyle(CONFIG.textStyles.game as Partial<TextStyleOptions>);
+    style.fill = { fill };
 
     const playText = new Text('Spin the wheels!', style);
     playText.x = Math.round((bottom.width - playText.width) / 2);
