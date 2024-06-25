@@ -7,7 +7,7 @@ export class Game {
   private constructor() { /*this class is purely static*/ }
 
   static app: Application;
-  private static currentScene: IScene; 
+  static currentScene: IScene; 
 
   static async initialize() {
     Game.app = new Application();

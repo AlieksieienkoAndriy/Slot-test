@@ -3,6 +3,7 @@ import { Reel } from "./Reel";
 import { CONFIG } from "../config";
 import { Game } from "./Game";
 import { SpinAnimation } from "./SpinAnimation";
+import { events } from "../utils/events";
 
 export class Reels {
   reels: Reel[] = [];
@@ -25,7 +26,7 @@ export class Reels {
 
   createMask() {    
     const mask = new Graphics()
-      .rect(0, 0, this.reelContainer.width, this.reelContainer.height - CONFIG.game.symbol_size)
+      .rect(0, 0, this.reelContainer.width + 15, this.reelContainer.height - CONFIG.game.symbol_size)
       .fill({ color: 0xFFFFFF })
 
     this.reelContainer.mask = mask;
@@ -49,8 +50,7 @@ export class Reels {
   }
 
   reelsComplete() {
-    // Handle what happens when reels complete their spin
-    console.log('Reels completed');    
+    window.dispatchEvent(events.checkBonusEvent);
   }
 
   onResize() {

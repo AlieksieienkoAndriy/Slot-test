@@ -1,9 +1,11 @@
 import { Color, Container, FillGradient, Graphics, Text, TextStyle, TextStyleOptions, Texture } from "pixi.js";
 import { IScene } from "../../utils/types";
-import { BonusController } from "../BonusController";
+import { BonusController } from "../bonus/BonusController";
 import { Game } from "../Game";
 import { CONFIG } from "../../config";
 import { Reels } from "../Reels";
+import { BonusModel } from "../bonus/BonusModel";
+import { BonusView } from "../bonus/BonusView";
 
 export class GameScene extends Container implements IScene {
   reels!: Reels;
@@ -58,7 +60,7 @@ export class GameScene extends Container implements IScene {
   }
 
   createBonusController() {
-    this.bonusController = new BonusController(this);
+    this.bonusController = new BonusController(new BonusModel(), new BonusView(this.reels.reelContainer));
   }
 
   setupInteractivity() {
@@ -68,7 +70,8 @@ export class GameScene extends Container implements IScene {
   }
 
   startPlay() {
-    this.reels.play();
+    this.bonusController.bonusCollect();
+    this.reels.play();    
   }
 
   update() {
