@@ -1,5 +1,5 @@
 import * as PIXI from "pixi.js";
-import { SceneManager } from "../SceneManager";
+import { Game } from "../Game";
 import { manifest } from "../../assets";
 import { GameScene } from "./GameScene";
 import { CONFIG } from "../../config";
@@ -23,7 +23,7 @@ export class LoaderScene extends PIXI.Container implements IScene {
   }
 
   private createLoaderBar() {
-    const loaderBarWidth = SceneManager.width * 0.75;
+    const loaderBarWidth = Game.app.screen.width * 0.75;
 
     this.loaderBarFill = new PIXI.Graphics()
       .rect(0, 0, loaderBarWidth, 30)
@@ -34,20 +34,19 @@ export class LoaderScene extends PIXI.Container implements IScene {
     this.loaderBarBoder = new PIXI.Graphics()    
       .rect(0, 0, loaderBarWidth, 30)
       .stroke({ color: 0xffffff, width: 2 });
-      // .fill({ color: 0xffffff, alpha: 0 })
 
     this.loaderBar = new PIXI.Container();
     this.loaderBar.addChild(this.loaderBarFill);
     this.loaderBar.addChild(this.loaderBarBoder);
-    this.loaderBar.position.x = (SceneManager.width - this.loaderBar.width) / 2;
-    this.loaderBar.position.y = (SceneManager.height - this.loaderBar.height) / 2;
+    this.loaderBar.position.x = (Game.app.screen.width - this.loaderBar.width) / 2;
+    this.loaderBar.position.y = (Game.app.screen.height - this.loaderBar.height) / 2;
     this.addChild(this.loaderBar);
   }
 
   private createText() {
     const text = new PIXI.Text('Loading...', CONFIG.textStyles.game);
     text.anchor.set(0.5);
-    text.position.set(SceneManager.width / 2, this.loaderBar.y - 50);
+    text.position.set(Game.app.screen.width / 2, this.loaderBar.y - 50);
     this.addChild(text);
 
     this.progress = new PIXI.Text('0%', CONFIG.textStyles.game);
@@ -72,7 +71,7 @@ export class LoaderScene extends PIXI.Container implements IScene {
   }
 
   private gameLoaded(): void {
-    SceneManager.changeScene(new GameScene());
+    Game.changeScene(new GameScene());
     console.log('loaded...');
     
   }

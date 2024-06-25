@@ -11,7 +11,7 @@ export const manifest: PIXI.AssetInitOptions = {
             "helmlok": "https://pixijs.com/assets/helmlok.png",
             "skully": "https://pixijs.com/assets/skully.png"
           }
-        }
+        },
       ]
     }
   }

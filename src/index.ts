@@ -1,12 +1,3 @@
-// import { Game } from './modules/Game';
+import { Game } from "./modules/Game";
 
-// new Game();
-
-import { CONFIG } from "./config";
-import { SceneManager } from "./modules/SceneManager";
-import { LoaderScene } from "./modules/scenes/LoaderScene";
-
-SceneManager.initialize(CONFIG.canvas.width, CONFIG.canvas.height);
-
-const loaderScene: LoaderScene = new LoaderScene();
-SceneManager.changeScene(loaderScene);
+Game.initialize();

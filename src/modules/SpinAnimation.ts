@@ -2,7 +2,7 @@ import { gsap } from 'gsap';
 import { Reel } from './Reel';
 
 export class SpinAnimation {
-    static spin(reel: Reel, target: number, duration: number, onComplete: () => void) {
+    static spin(reel: Reel, target: number, duration: number, cb: () => void) {
         reel.isSpinning = true;
         gsap.to(reel, {
             position: target,
@@ -10,7 +10,7 @@ export class SpinAnimation {
             ease: 'back.out(0.5)',
             onComplete: () => {
                 reel.isSpinning = false;
-                onComplete();
+                cb();
             }
         });
     }

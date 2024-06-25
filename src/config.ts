@@ -1,3 +1,5 @@
+import { Texture } from "pixi.js";
+
 export const CONFIG = {
   canvas: {
     width: 1280,
@@ -33,29 +35,9 @@ export const CONFIG = {
   },
 
   game: {
-    herd: {
-      groupLimit: 5,
-      sheepAmount: {
-        from: 10,
-        to: 20
-      },
-      distance: 50
-    },
-
-    herdsman: {
-      limitY: 220,
-      startPos: {
-        x: 1300,
-        y: 800
-      },      
-      scale: 0.25,
-      walkDuration: 1000
-    },
-
-    sheep: {
-      limitY: 220,
-      scale: 1.5,
-      walkDuration: 1000
-    }
+    reel_width: 160,
+    symbol_size: 150,
+    
+    textures: [] as Texture[],
   }
 }
