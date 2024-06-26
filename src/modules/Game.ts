@@ -38,28 +38,30 @@ export class Game {
 
     Game.currentScene = newScene;
     Game.app.stage.addChild(Game.currentScene);
+    Game.currentScene?.onResize();
   }
 
   public static resize(): void {
     const screenWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     const screenHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
-    const scale = Math.min(screenWidth / Game.app.screen.width, screenHeight / Game.app.screen.height); // canvas adapts to screen
-    // const scale = Math.max(screenWidth / Game.width, screenHeight / Game.height); // canvas adapts to screen
+    const scale = Math.max(screenWidth / Game.app.screen.width, screenHeight / Game.app.screen.height);
 
     const enlargedWidth = Math.floor(scale * Game.app.screen.width);
     const enlargedHeight = Math.floor(scale * Game.app.screen.height);
-
-    const horizontalMargin = (screenWidth - enlargedWidth) / 2;
-    const verticalMargin = (screenHeight - enlargedHeight) / 2;
-
+    
     const canvasStyle = Game.app.canvas.style;
 
     canvasStyle!.width = `${enlargedWidth}px`;
     canvasStyle!.height = `${enlargedHeight}px`;
-    (canvasStyle as any)!.marginLeft = (canvasStyle as any)!.marginRight = `${horizontalMargin}px`;
-    (canvasStyle as any)!.marginTop = (canvasStyle as any)!.marginBottom = `${verticalMargin}px`;
-  }
+
+    canvasStyle.position = 'absolute';
+    canvasStyle.left = '50%';
+    canvasStyle.top = '50%';
+    canvasStyle.transform = 'translate(-50%, -50%)';
+
+    Game.currentScene?.onResize()
+  }  
 
   private static update(): void {
     if (Game.currentScene) {

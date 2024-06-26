@@ -75,5 +75,8 @@ export class LoaderScene extends PIXI.Container implements IScene {
   }
 
   public update(): void {    
+  }
+
+  public onResize() {    
   }  
 }

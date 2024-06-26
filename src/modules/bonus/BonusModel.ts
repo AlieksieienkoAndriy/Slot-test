@@ -15,11 +15,7 @@ export class BonusModel {
   checkBonus() {
     const isBonus = Boolean(Math.round(Math.random()));
     if (isBonus) {
-      const position = {
-        x: Math.round(Math.random() * 4),
-        y: Math.round(Math.random() * 2)
-      };
-
+      const position = new Point(Math.round(Math.random() * 4), Math.round(Math.random() * 2))
       this.addBonus(position as Point);
     }
     return isBonus;

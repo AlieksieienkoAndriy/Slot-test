@@ -8,12 +8,17 @@ import { BonusModel } from "../bonus/BonusModel";
 import { BonusView } from "../bonus/BonusView";
 
 export class GameScene extends Container implements IScene {
+  gameContainer!: Container
   reels!: Reels;
+  top!: Graphics;
   spinButton!: Graphics;
   bonusController!: BonusController;
 
   constructor() {
     super();
+
+    this.gameContainer = new Container();
+    this.addChild(this.gameContainer);
 
     this.createReels();
     this.createUI();
@@ -25,12 +30,12 @@ export class GameScene extends Container implements IScene {
 
   createReels() {
     this.reels = new Reels();
-    this.addChild(this.reels.reelContainer);
+    this.gameContainer.addChild(this.reels.reelContainer);
   }
 
   createUI() {
     const margin = (Game.app.screen.height - CONFIG.game.symbol_size * 3) / 2;
-    const top = new Graphics().rect(0, 0, Game.app.screen.width, margin).fill({ color: 0x0 });
+    this.top = new Graphics().rect(0, 0, Game.app.screen.width, margin).fill({ color: 0x0 });
     const bottom = new Graphics().rect(0, 150 * 3 + margin, Game.app.screen.width, margin).fill({ color: 0x0 });
 
     const fill = new FillGradient(0, 0, 0, 36 * 1.7);
@@ -49,12 +54,12 @@ export class GameScene extends Container implements IScene {
     bottom.addChild(playText);
 
     const headerText = new Text('PIXI MONSTER SLOTS!', style);
-    headerText.x = Math.round((top.width - headerText.width) / 2);
+    headerText.x = Math.round((this.top.width - headerText.width) / 2);
     headerText.y = Math.round((margin - headerText.height) / 2);
-    top.addChild(headerText);
+    this.top.addChild(headerText);
 
-    this.addChild(top);
-    this.addChild(bottom);
+    this.gameContainer.addChild(this.top);
+    this.gameContainer.addChild(bottom);
 
     this.spinButton = bottom;
   }
@@ -80,5 +85,21 @@ export class GameScene extends Container implements IScene {
 
   onResize() {
     this.reels.onResize();
+
+    const screenW = window.innerWidth;
+    const screenH = window.innerHeight;
+    const appScreenW = Game.app.screen.width;
+    const appScreenH = Game.app.screen.height;
+
+    const scale = Math.max(screenW / appScreenW, screenH / appScreenH);
+    const containerW = this.reels.reelContainer.width * scale;
+    const containerH = (this.reels.reelContainer.height + this.top.height + this.spinButton.height) * scale;    
+
+    const adaptScale = Math.min(1, screenW / containerW, screenH / containerH);
+    this.gameContainer.scale.set(adaptScale);
+    this.gameContainer.position.set(
+        (appScreenW / 2) - (this.gameContainer.width / 2), 
+        (appScreenH / 2) - (this.gameContainer.height / 2)
+    );
   }  
 };
