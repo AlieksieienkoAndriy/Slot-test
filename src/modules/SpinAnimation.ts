@@ -1,5 +1,5 @@
 import { gsap } from 'gsap';
-import { Reel } from './Reel';
+import { Reel } from './reels/Reel';
 
 export class SpinAnimation {
     static spin(reel: Reel, target: number, duration: number, cb: () => void) {

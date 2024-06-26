@@ -1,6 +1,6 @@
-import * as PIXI from "pixi.js";
+import { Container } from "pixi.js";
 
-export interface IScene extends PIXI.Container {
+export interface IScene extends Container {
     update(): void;
     onResize(): void;
 }

@@ -1,11 +1,11 @@
-import { Color, Container, FillGradient, Graphics, Text, TextStyle, TextStyleOptions, Texture } from "pixi.js";
+import { Color, Container, FillGradient, Graphics, Text, TextStyle, TextStyleOptions } from "pixi.js";
 import { IScene } from "../../utils/types";
 import { BonusController } from "../bonus/BonusController";
 import { Game } from "../Game";
 import { CONFIG } from "../../config";
-import { Reels } from "../Reels";
 import { BonusModel } from "../bonus/BonusModel";
 import { BonusView } from "../bonus/BonusView";
+import { Reels } from "../reels/Reels";
 
 export class GameScene extends Container implements IScene {
   gameContainer!: Container

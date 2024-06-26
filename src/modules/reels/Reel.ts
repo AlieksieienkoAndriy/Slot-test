@@ -1,5 +1,5 @@
 import { Container, Sprite, Texture, BlurFilter } from 'pixi.js';
-import { CONFIG } from '../config';
+import { CONFIG } from '../../config';
 import { ReelSymbol } from './ReelSymbol';
 
 export class Reel {

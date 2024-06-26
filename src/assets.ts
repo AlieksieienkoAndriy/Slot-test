@@ -1,6 +1,6 @@
-import * as PIXI from "pixi.js";
+import { AssetInitOptions } from "pixi.js";
 
-export const manifest: PIXI.AssetInitOptions = {
+export const manifest: AssetInitOptions = {
     manifest: {
       bundles: [
         {

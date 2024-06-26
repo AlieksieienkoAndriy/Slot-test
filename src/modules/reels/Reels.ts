@@ -1,9 +1,9 @@
 import { Container, Graphics } from "pixi.js";
 import { Reel } from "./Reel";
-import { CONFIG } from "../config";
-import { Game } from "./Game";
-import { SpinAnimation } from "./SpinAnimation";
-import { events } from "../utils/events";
+import { CONFIG } from "../../config";
+import { SpinAnimation } from "../SpinAnimation";
+import { events } from "../../utils/events";
+import { Game } from "../Game";
 
 export class Reels {
   reels: Reel[] = [];
