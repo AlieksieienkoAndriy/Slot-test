@@ -7,7 +7,7 @@ export class Game {
   private constructor() { /*this class is purely static*/ }
 
   static app: Application;
-  static currentScene: IScene; 
+  static currentScene: IScene;
 
   static async initialize() {
     Game.app = new Application();
@@ -49,7 +49,7 @@ export class Game {
 
     const enlargedWidth = Math.floor(scale * Game.app.screen.width);
     const enlargedHeight = Math.floor(scale * Game.app.screen.height);
-    
+
     const canvasStyle = Game.app.canvas.style;
 
     canvasStyle!.width = `${enlargedWidth}px`;
@@ -61,7 +61,7 @@ export class Game {
     canvasStyle.transform = 'translate(-50%, -50%)';
 
     Game.currentScene?.onResize()
-  }  
+  }
 
   private static update(): void {
     if (Game.currentScene) {

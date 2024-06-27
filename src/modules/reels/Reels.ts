@@ -18,13 +18,13 @@ export class Reels {
   addReels() {
     for (let i = 0; i < CONFIG.game.reelsAmount; i++) {
       const reel = new Reel(i * CONFIG.game.reel_width, CONFIG.game.symbol_size);
-      
+
       this.reelContainer.addChild(reel.container);
       this.reels.push(reel);
     }
   }
 
-  createMask() {    
+  createMask() {
     const mask = new Graphics()
       .rect(0, 0, this.reelContainer.width + 15, this.reelContainer.height - CONFIG.game.symbol_size)
       .fill({ color: 0xFFFFFF })
@@ -55,7 +55,7 @@ export class Reels {
 
   onResize() {
     const margin = (Game.app.screen.height - CONFIG.game.symbol_size * 3) / 2;
-    
+
     this.reelContainer.position.set(
       this.reelContainer.x = (Game.app.screen.width - CONFIG.game.reel_width * CONFIG.game.reelsAmount) / 2,
       margin

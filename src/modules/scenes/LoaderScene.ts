@@ -31,10 +31,10 @@ export class LoaderScene extends Container implements IScene {
     this.loaderBarFill = new Graphics()
       .rect(0, 0, loaderBarWidth, 30)
       .fill({ color: 0x008800 })
-    
+
     this.loaderBarFill.scale.x = 0;
 
-    const loaderBarBorder = new Graphics()    
+    const loaderBarBorder = new Graphics()
       .rect(0, 0, loaderBarWidth, 30)
       .stroke({ color: 0xffffff, width: 2 });
 
@@ -48,7 +48,7 @@ export class LoaderScene extends Container implements IScene {
     const text = new Text('Loading...', CONFIG.textStyles.loader);
     text.anchor.set(0.5);
     text.position.set(
-      this.loaderBar.x + this.loaderBar.width / 2, 
+      this.loaderBar.x + this.loaderBar.width / 2,
       this.loaderBar.y - 50
     );
     this.loaderContainer.addChild(text);
@@ -56,7 +56,7 @@ export class LoaderScene extends Container implements IScene {
     this.progress = new Text('0%', CONFIG.textStyles.loader);
     this.progress.anchor.set(0.5);
     this.progress.position.set(
-      this.loaderBar.x + this.loaderBar.width / 2, 
+      this.loaderBar.x + this.loaderBar.width / 2,
       this.loaderBar.y + this.loaderBar.height / 2
     );
     this.loaderContainer.addChild(this.progress);
@@ -78,7 +78,7 @@ export class LoaderScene extends Container implements IScene {
     Game.changeScene(new GameScene());
   }
 
-  public update(): void {    
+  public update(): void {
   }
 
   public onResize() {

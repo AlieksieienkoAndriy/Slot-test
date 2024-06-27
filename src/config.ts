@@ -39,7 +39,7 @@ export const CONFIG = {
     symbol_size: 150,
     reelsAmount: 5,
     symbolsAmount: 3,
-    spinDuration: 2500,    
-    extraDuration: 600,    
+    spinDuration: 2500,
+    extraDuration: 600,
   }
 }

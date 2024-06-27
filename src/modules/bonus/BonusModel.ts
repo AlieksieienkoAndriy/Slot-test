@@ -6,7 +6,7 @@ export class BonusModel {
   activeBonuse: Point | null = null;
 
   addBonus(position: Point) {
-      this.activeBonuse = position;
+    this.activeBonuse = position;
   }
 
   removeBonus() {
@@ -17,7 +17,7 @@ export class BonusModel {
     const isBonus = Boolean(Math.round(Math.random()));
     if (isBonus) {
       const position = new Point(
-        Math.round(Math.random() * (CONFIG.game.reelsAmount - 1)), 
+        Math.round(Math.random() * (CONFIG.game.reelsAmount - 1)),
         Math.round(Math.random() * (CONFIG.game.symbolsAmount - 1)))
       this.addBonus(position as Point);
     }
@@ -25,6 +25,6 @@ export class BonusModel {
   }
 
   getBonuse() {
-      return this.activeBonuse;
+    return this.activeBonuse;
   }
 }
