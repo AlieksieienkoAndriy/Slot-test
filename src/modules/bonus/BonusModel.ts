@@ -1,4 +1,5 @@
 import { Point } from "pixi.js";
+import { CONFIG } from "../../config";
 
 export class BonusModel {
   // Define the properties and methods related to bonus data
@@ -15,7 +16,9 @@ export class BonusModel {
   checkBonus() {
     const isBonus = Boolean(Math.round(Math.random()));
     if (isBonus) {
-      const position = new Point(Math.round(Math.random() * 4), Math.round(Math.random() * 2))
+      const position = new Point(
+        Math.round(Math.random() * (CONFIG.game.reelsAmount - 1)), 
+        Math.round(Math.random() * (CONFIG.game.symbolsAmount - 1)))
       this.addBonus(position as Point);
     }
     return isBonus;

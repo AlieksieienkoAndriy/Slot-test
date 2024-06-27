@@ -26,7 +26,7 @@ export class Reel {
             Texture.from('skully'),
           ];
 
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < CONFIG.game.symbolsAmount + 1; i++) {
             const texture = this.textures[Math.floor(Math.random() * this.textures.length)];
             const symbol = new ReelSymbol(texture);
             symbol.view.y = i * symbolSize;

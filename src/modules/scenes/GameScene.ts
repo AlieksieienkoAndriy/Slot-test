@@ -35,8 +35,14 @@ export class GameScene extends Container implements IScene {
 
   createUI() {
     const margin = (Game.app.screen.height - CONFIG.game.symbol_size * 3) / 2;
-    this.top = new Graphics().rect(0, 0, Game.app.screen.width, margin).fill({ color: 0x0 });
-    const bottom = new Graphics().rect(0, 150 * 3 + margin, Game.app.screen.width, margin).fill({ color: 0x0 });
+    this.top = new Graphics()
+      .rect(0, 0, Game.app.screen.width, margin)
+      .fill({ color: 0x0 });
+    const bottom = new Graphics()
+      .rect(
+        0, CONFIG.game.symbol_size * CONFIG.game.symbolsAmount + margin, 
+        Game.app.screen.width, margin)
+      .fill({ color: 0x0 });
 
     const fill = new FillGradient(0, 0, 0, 36 * 1.7);
     const colors = [0xffffff, 0x00ff99].map((color) => Color.shared.setValue(color).toNumber());
@@ -49,13 +55,17 @@ export class GameScene extends Container implements IScene {
     style.fill = { fill };
 
     const playText = new Text('Spin the wheels!', style);
-    playText.x = Math.round((bottom.width - playText.width) / 2);
-    playText.y = Game.app.screen.height - margin + Math.round((margin - playText.height) / 2);
+    playText.position.set(
+      Math.round((bottom.width - playText.width) / 2),
+      bottom.getBounds().top + Math.round((margin - playText.height) / 2)
+    );    
     bottom.addChild(playText);
 
     const headerText = new Text('PIXI MONSTER SLOTS!', style);
-    headerText.x = Math.round((this.top.width - headerText.width) / 2);
-    headerText.y = Math.round((margin - headerText.height) / 2);
+    headerText.position.set(
+      Math.round((this.top.width - headerText.width) / 2),
+      Math.round((margin - headerText.height) / 2)
+    );    
     this.top.addChild(headerText);
 
     this.gameContainer.addChild(this.top);

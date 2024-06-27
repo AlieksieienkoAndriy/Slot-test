@@ -25,11 +25,21 @@ export const CONFIG = {
       },
       wordWrap: true,
       wordWrapWidth: 440,
-    }
+    },
+
+    bonus: {
+      fontFamily: "Arial",
+      fontSize: 32,
+      fill: "white",
+    },
   },
 
   game: {
     reel_width: 160,
-    symbol_size: 150,    
+    symbol_size: 150,
+    reelsAmount: 5,
+    symbolsAmount: 3,
+    spinDuration: 2500,    
+    extraDuration: 600,    
   }
 }

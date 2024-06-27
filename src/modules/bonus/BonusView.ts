@@ -18,7 +18,7 @@ export class BonusView {
         
         this.container.addChild(background);
 
-        const style = new TextStyle(CONFIG.textStyles.loader);
+        const style = new TextStyle(CONFIG.textStyles.bonus);
         const bonusText = new Text("BONUS!", style);
         bonusText.anchor.set(0.5);
         bonusText.position.set(background.width / 2, background.height / 2);        
